@@ -51,7 +51,7 @@ export const constantRouterMap = [
         path: 'pictureByList',
         name: 'pictureByList',
         component: () => import('@/views/pictureLibrary/pictureByList/index'),
-        meta: { title: '列表', icon: 'nested' }
+        meta: { title: '列表', icon: 'nested',roles:['admin','superAdmin']}
       }
       ,
       {
@@ -65,7 +65,7 @@ export const constantRouterMap = [
         path: 'uploadPictures',
         name: 'uploadPictures', 
         component: () => import('@/views/pictureLibrary/uploadPictures/index'),
-        meta: { title: '图片上传', icon: 'link' }
+        meta: { title: '图片上传', icon: 'link',roles:['superAdmin'] }
       }
       // {
       //   path: 'tree',

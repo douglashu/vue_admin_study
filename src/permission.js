@@ -23,7 +23,26 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
-        next()
+        // 进行用户权限判断
+        console.log('权限',store.getters.roles,to.meta); 
+        let role = store.getters.roles;
+        if(!to.meta.roles || to.meta.roles.length == 0 ){
+          // 没有标注表示不需要验证的验证
+          next()
+        }else{
+          // 有的话  进行权限比对
+          let roleArr = to.meta.roles;
+          if(roleArr.indexOf(role)>=0){
+            // 有权限
+            console.log('yes')
+            next()
+          }else{
+            // 没有权限
+            console.log('no')
+            next({ path: '*' })
+          }
+        }
+        
       }
     }
   } else {
