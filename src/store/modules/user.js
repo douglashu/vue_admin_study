@@ -1,5 +1,6 @@
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import {filterRoute} from '../../router'
 
 const user = {
   state: {
@@ -32,6 +33,7 @@ const user = {
         login(username, userInfo.password).then(response => {
           const data = response.data
           setToken(data.token)
+         
           commit('SET_TOKEN', data.token)
           resolve()
         }).catch(error => {
@@ -42,18 +44,27 @@ const user = {
 
     // 获取用户信息
     GetInfo({ commit, state }) {
+     
       return new Promise((resolve, reject) => {
+        console.log('获取用户信息')
         getInfo(state.token).then(response => {
-          const data = response.data
-          console.log(response.data)
+          const data = response.data      
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', data.roles[0])
+            // 更新权限路由表
+            // debugger
+            filterRoute(data.roles[0],()=>{
+              
+              resolve(response)
+            })
+
           } else {
-            reject('getInfo: roles must be a non-null array !')
+            reject('getInfo: roles must be a non-null array !');
+            resolve(response)
           }
           commit('SET_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
-          resolve(response)
+         
         }).catch(error => {
           reject(error)
         })

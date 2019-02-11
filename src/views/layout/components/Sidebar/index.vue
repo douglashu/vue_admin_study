@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar wrap-class="scrollbar-wrapper">
-   
+   {{roles}}
     <el-menu
       :show-timeout="200"
       :default-active="$route.path"
@@ -28,16 +28,37 @@ import SidebarItem from "./SidebarItem";
 export default {
   components: { SidebarItem },
   computed: {
-    ...mapGetters(["sidebar"]),
+    ...mapGetters(["sidebar","roles","routersArr"]),
     routes() {
-      return this.$router.options.routes;
+      console.log('更新', this.$router.options.routes)
+      return [...this.$router.options.routes,...this.routersArr];
     },
     isCollapse() {
       return false;
     }
   },
+  updated(){
+    
+  },
   created() {
-    console.log(this.routes);
+    // console.log(0,this.$router);
+  },
+  methods:{
+    _rolesSet(item){
+     
+      // if(!item.meta.roles){
+      //   return true
+      // }
+      // let key = item.meta.roles || [];
+      // let role = this.roles;
+      // if(key.indexOf(role)>=0){
+      //   return true
+      // }else{
+      //   return false
+      // }
+      // console.log('routez',item)
+       return true
+    }
   }
 };
 </script>

@@ -6,7 +6,8 @@ const app = {
       opened: !+Cookies.get('sidebarStatus'),
       withoutAnimation: false
     },
-    device: 'desktop'
+    device: 'desktop',
+    routers:''
   },
   mutations: {
     TOGGLE_SIDEBAR: state => {
@@ -25,6 +26,10 @@ const app = {
     },
     TOGGLE_DEVICE: (state, device) => {
       state.device = device
+    },
+    UPDATED_ROUTE:(state,routers)=>{
+     
+      state.routers = routers
     }
   },
   actions: {
@@ -37,6 +42,15 @@ const app = {
     },
     ToggleDevice({ commit }, device) {
       commit('TOGGLE_DEVICE', device)
+    },
+
+    // 路由权限控制
+    UpdatedRoute({ commit },routes){
+      return new Promise((resolve, reject) => {
+        commit('UPDATED_ROUTE', routes);
+        resolve();   
+      })
+     
     }
   }
 }

@@ -1,16 +1,18 @@
 <template>
-  <div class="container" >
+  <div class="container">
     <div v-viewer :style="`height:${window_height}px`">
       <vue-waterfall-easy
+        class="imgItems"
         ref="waterfall"
         :imgsArr="imgsArr"
         @click="clickFn"
         @scrollReachBottom="()=>{this.$refs.waterfall.waterfallOver()}"
         :imgWidth="200"
+        :maxCols = "cols"
       >
         <div class="img-info" slot-scope="props">
           <p class="some-info">第{{props.index+1}}张图片</p>
-          <p class="some-info">{{props.value.info}}</p>
+          <p class="some-info-note">{{props.value.info}}</p>
         </div>
       </vue-waterfall-easy>
     </div>
@@ -19,7 +21,7 @@
     </el-card>
     <!-- <viewer :images="imgsArr">
       <img v-for="(item,index) in imgsArr" :src="item.src" :key="index">
-    </viewer> -->
+    </viewer>-->
   </div>
 </template> 
 
@@ -124,7 +126,9 @@ export default {
             "http://wx3.sinaimg.cn/orj360/988bf6ffgy1fxykyrsfkqj20zk1hcwsw.jpg",
           info: "一些图片描述文字"
         }
-      ]
+      ],
+      cols:Math.floor
+      (0.8*window.innerWidth/200)
     };
   },
   components: {
@@ -185,5 +189,18 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.imgItems {
+  margin-bottom: 10px;
+  overflow: hidden;
+  .img-info {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    .some-info-note{
+      color: #d3d3d3;
+      font-size: 12px
+    }
+  }
 }
 </style>

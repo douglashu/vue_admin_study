@@ -6,5 +6,6 @@ const getters = {
   name: state => state.user.name,
   roles: state => state.user.roles,
   historyTabs: state => state.tabs.historyTabs,
+  routersArr: state => state.app.routers,
 }
 export default getters
