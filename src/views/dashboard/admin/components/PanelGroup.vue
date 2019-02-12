@@ -3,8 +3,8 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
-          <!-- <svg-icon icon-class="peoples" class-name="card-panel-icon" /> -->
-          <i class="el-icon-news card-panel-icon" ></i>
+          <svg-icon icon-class="tongjichaxun" class-name="card-panel-icon" />
+          <!-- <i class="el-icon-news card-panel-icon" ></i> -->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">New Visits</div>
@@ -15,8 +15,8 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('messages')">
         <div class="card-panel-icon-wrapper icon-message">
-          <!-- <svg-icon icon-class="message" class-name="card-panel-icon" /> -->
-          <i class="el-icon-goods card-panel-icon" ></i>
+          <svg-icon icon-class="zhishizhongxin" class-name="card-panel-icon" />
+          <!-- <i class="el-icon-goods card-panel-icon" ></i> -->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Messages</div>
@@ -27,8 +27,8 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('purchases')">
         <div class="card-panel-icon-wrapper icon-money">
-          <!-- <svg-icon icon-class="money" class-name="card-panel-icon" /> -->
-          <i class="el-icon-service card-panel-icon" ></i>
+          <svg-icon icon-class="jingyingguanli" class-name="card-panel-icon" />
+          <!-- <i class="el-icon-service card-panel-icon" ></i> -->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Purchases</div>
@@ -39,8 +39,8 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('shoppings')">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <!-- <svg-icon icon-class="shopping" class-name="card-panel-icon" /> -->
-          <i class="el-icon-bell card-panel-icon" ></i>
+          <svg-icon icon-class="banshidating1" class-name="card-panel-icon" />
+          <!-- <i class="el-icon-bell card-panel-icon" ></i> -->
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">Shoppings</div>
@@ -101,6 +101,7 @@ export default {
     }
     .icon-people {
       color: #40c9c6;
+      //  color: red;
     }
     .icon-message {
       color: #36a3f7;

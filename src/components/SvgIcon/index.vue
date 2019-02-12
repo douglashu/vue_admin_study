@@ -39,7 +39,7 @@ export default {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
- -webkit-filter: drop-shadow(rgb(0, 204, 153) 80px 0px);
-filter: drop-shadow(rgb(0, 204, 153) 80px 0px);
+ /* -webkit-filter: drop-shadow(rgb(0, 204, 153) 80px 0px);
+filter: drop-shadow(rgb(0, 204, 153) 80px 0px); */
 }
 </style>

@@ -75,7 +75,7 @@ let filterRouteArr = [
         path: 'picturesEdite',
         name: 'picturesEdite', 
         component: () => import('@/views/pictureLibrary/picturesEdite/index'),
-        meta: { title: '详情编辑', icon: 'link',noHistory:true}
+        meta: { title: '详情编辑', icon: 'tudangguanli',noHistory:true}
       }
     ]
   },
@@ -89,7 +89,7 @@ let filterRouteArr = [
         path: 'articleList',
         name: 'articleList', 
         component: () => import('@/views/articles/articleList/index'),
-        meta: { title: '导出excel', icon: 'link',noHistory:true}
+        meta: { title: '导出excel', icon: 'jihuaguanli',noHistory:true}
       }
     ]
   }
