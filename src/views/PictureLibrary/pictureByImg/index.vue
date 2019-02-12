@@ -28,10 +28,10 @@
 <script>
 // import { getList } from "@/api/table";
 import vueWaterfallEasy from "vue-waterfall-easy";
-import "viewerjs/dist/viewer.css";
-import Viewer from "v-viewer";
-import Vue from "vue";
-Vue.use(Viewer);
+
+// import Viewer from "v-viewer";
+// import Vue from "vue";
+// Vue.use(Viewer);
 
 export default {
   filters: {},
@@ -141,9 +141,9 @@ export default {
     clickFn() {
       event.preventDefault();
       // 只有当点击到图片时才进行操作
-      if (event.target.tagName.toLowerCase() == "img") {
-        console.log("img clicked");
-      }
+      // if (event.target.tagName.toLowerCase() == "img") {
+      //   console.log("img clicked");
+      // }
     },
     // 加载更多
     // getData() {

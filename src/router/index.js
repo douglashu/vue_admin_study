@@ -48,13 +48,13 @@ let filterRouteArr = [
     component: Layout,
     redirect: '/pictureLibrary/pictureByList',
     name: 'Pictures',
-    meta: { title: '图片库', icon: 'link' },
+    meta: { title: '图片库', icon: 'tongjichaxun' },
     children: [
       {
         path: 'pictureByList',
         name: 'pictureByList',
         component: () => import('@/views/pictureLibrary/pictureByList/index'),
-        meta: { title: '列表', icon: 'nested'}
+        meta: { title: '列表', icon: 'tongjichaxun'}
       }
       ,
       {
@@ -76,6 +76,20 @@ let filterRouteArr = [
         name: 'picturesEdite', 
         component: () => import('@/views/pictureLibrary/picturesEdite/index'),
         meta: { title: '详情编辑', icon: 'link',noHistory:true}
+      }
+    ]
+  },
+  {
+    path: '/articles',
+    component: Layout,
+    name: 'Articles',
+    meta: { title: 'excel', icon: 'link' },
+    children: [
+      {
+        path: 'articleList',
+        name: 'articleList', 
+        component: () => import('@/views/articles/articleList/index'),
+        meta: { title: '导出excel', icon: 'link',noHistory:true}
       }
     ]
   }

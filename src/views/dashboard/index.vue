@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard-container">
-   <adminDashboard></adminDashboard>
+    <adminDashboard></adminDashboard>   
+    <!-- <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-zhishizhongxin1"></use>
+    </svg> -->
   </div>
 </template>
 

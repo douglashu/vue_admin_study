@@ -9,7 +9,7 @@ const whiteList = ['/login'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start()
   
-  console.log(to)
+  // console.log(to)
 
   // 检测本地token 存在
   if (getToken()) {    

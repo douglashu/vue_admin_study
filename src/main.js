@@ -5,16 +5,18 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
-
+import "viewerjs/dist/viewer.css";
 import '@/styles/index.scss' // global css
 
 import App from './App'
 import router from './router'
 import store from './store'
+import Viewer from "v-viewer";
+import './icons/iconfont.js'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-
+Vue.use(Viewer);
 Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false

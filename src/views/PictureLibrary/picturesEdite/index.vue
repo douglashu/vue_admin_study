@@ -1,111 +1,132 @@
 <template>
   <div class="app-container">
     <PageTopBack></PageTopBack>
-    <el-row>
-     
-      <el-col :span="16">
-        <div class="grid-content bg-purple-light">
-          <el-form ref="form" :model="form" label-width="120px">
-            <el-form-item label="图片名称">
-              <el-input v-model="form.name"/>
-            </el-form-item>
-            <el-form-item label="所属类别">
-              <el-select v-model="form.region" placeholder="please select your zone">
-                <el-option label="Zone one" value="shanghai"/>
-                <el-option label="Zone two" value="beijing"/>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="创建时间">
-              <el-col :span="11">
-                <el-date-picker
-                  v-model="form.date1"
-                  type="date"
-                  placeholder="Pick a date"
-                  style="width: 100%;"
-                />
-              </el-col>
-              <el-col :span="2" class="line">-</el-col>
-              <el-col :span="11">
-                <el-time-picker
-                  v-model="form.date2"
-                  type="fixed-time"
-                  placeholder="Pick a time"
-                  style="width: 100%;"
-                />
-              </el-col>
-            </el-form-item>
-            <el-form-item label="可下载">
-              <el-switch v-model="form.delivery"/>
-            </el-form-item>
-            <el-form-item label="对以下人可见">
-              <el-checkbox-group v-model="form.type">
-                <el-checkbox label="全部" name="type"/>
-                <el-checkbox label="员工" name="type"/>
-                <el-checkbox label="管理员" name="type"/>
-                <el-checkbox label="超级管理员" name="type"/>
-              </el-checkbox-group>
-            </el-form-item>
-            <el-form-item label="是否公开">
-              <el-radio-group v-model="form.resource">
-                <el-radio label="私密"/>
-                <el-radio label="公开"/>
-              </el-radio-group>
-            </el-form-item>
-            <el-form-item label="备注">
-              <el-input v-model="form.desc" type="textarea"/>
-            </el-form-item>
-            <!-- <Editor
-          class="editor"
-          :value="content"
-          :setting="editorSetting"
-          @input="_handleContent"
-        ></Editor> -->
-            <Tinymce :height="300" v-model="content"></Tinymce>  
-             <!-- <tinymce /> -->
-             <div>{{content}}</div>
-            <el-form-item>
-              <el-button type="primary" @click="onSubmit">修改</el-button>
-              <el-button @click="onCancel">取消</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-        
-      </el-col>
-       <el-col :span="8" style="padding-left:10px">
+    <el-row class="top">
+      <el-col :span="8">
         <el-card class="PicPreBox">
-          <img
-            class="contain"
-            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1549018157507&di=eb399bdaf83216ed155f0f2e68c0f3de&imgtype=0&src=http%3A%2F%2Fpic27.nipic.com%2F20130129%2F668573_110420691153_2.jpg"
-            alt
-          >
-          <div class="">
-            <el-upload
-              class="uploadPic"
-              drag
-              action="https://jsonplaceholder.typicode.com/posts/"
-              multiple
-            >
-              <i class="el-icon-upload"></i>
-              <div class="el-upload__text">
-                将文件拖到此处，或
-                <em>点击上传</em>
-              </div>
-              <!-- <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div> -->
-            </el-upload>
-          </div>
+          <h3 class="commonTitle">图片预览：</h3>
+
+          <PreView  imgSrc="http://photo.tuchong.com/3265851/f/337445459.jpg"></PreView>
+        </el-card>
+      </el-col>
+      <el-col :span="16" style="padding-left:10px">
+        <el-card class>
+          <h3 class="commonTitle">下载量：</h3>
+          <line-chart :chart-data="lineChartData"/>
         </el-card>
       </el-col>
     </el-row>
+    <el-form ref="form" :model="form" label-width="120px">
+      <el-form-item label="替换图片">
+        <div class>
+          <el-upload
+            class="uploadPic"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            multiple
+          >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">
+              将文件拖到此处，或
+              <em>点击上传</em>
+            </div>
+            <!-- <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div> -->
+          </el-upload>
+        </div>
+      </el-form-item>
+      <el-form-item label="图片名称">
+        <el-input v-model="form.name"/>
+      </el-form-item>
+      <el-form-item label="所属类别">
+        <el-select v-model="form.region" placeholder="please select your zone">
+          <el-option label="Zone one" value="shanghai"/>
+          <el-option label="Zone two" value="beijing"/>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="创建时间">
+        <el-col :span="11">
+          <el-date-picker
+            v-model="form.date1"
+            type="date"
+            placeholder="Pick a date"
+            style="width: 100%;"
+          />
+        </el-col>
+        <el-col :span="2" class="line">-</el-col>
+        <el-col :span="11">
+          <el-time-picker
+            v-model="form.date2"
+            type="fixed-time"
+            placeholder="Pick a time"
+            style="width: 100%;"
+          />
+        </el-col>
+      </el-form-item>
+      <el-form-item label="可下载">
+        <el-switch v-model="form.delivery"/>
+      </el-form-item>
+      <el-form-item label="对以下人可见">
+        <el-checkbox-group v-model="form.type">
+          <el-checkbox label="全部" name="type"/>
+          <el-checkbox label="员工" name="type"/>
+          <el-checkbox label="管理员" name="type"/>
+          <el-checkbox label="超级管理员" name="type"/>
+        </el-checkbox-group>
+      </el-form-item>
+      <el-form-item label="是否公开">
+        <el-radio-group v-model="form.resource">
+          <el-radio label="私密"/>
+          <el-radio label="公开"/>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="备注">
+        <el-input v-model="form.desc" type="textarea"/>
+      </el-form-item>
+      <el-form-item label="描述文字">
+        <div class>
+          <Tinymce :height="300" v-model="content"></Tinymce>
+        </div>
+      </el-form-item>
+
+      <!-- <tinymce /> -->
+      <!-- <div>{{content}}</div> -->
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit" class>提交编辑内容</el-button>
+        <el-button @click="onCancel" class>放弃修改</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
 import PageTopBack from "@/components/PageTopBack";
-// import Editor from "@/components/EditeForm";
+import LineChart from "./components/LineChart";
 import Tinymce from "@/components/Tinymce";
+import PreView from "@/components/PreView";
+
+const lineChartData = {
+  newVisitis: {
+    expectedData: [100, 120, 161, 134, 105, 160, 165],
+    actualData: [120, 82, 91, 154, 162, 140, 145]
+  },
+  messages: {
+    expectedData: [200, 192, 120, 144, 160, 130, 140],
+    actualData: [180, 160, 151, 106, 145, 150, 130]
+  },
+  purchases: {
+    expectedData: [80, 100, 121, 104, 105, 90, 100],
+    actualData: [120, 90, 100, 138, 142, 130, 130]
+  },
+  shoppings: {
+    expectedData: [130, 140, 141, 142, 145, 150, 160],
+    actualData: [120, 82, 91, 154, 162, 140, 130]
+  }
+};
+
 export default {
   data() {
     return {
+      lineChartData: lineChartData.newVisitis,
       form: {
         name: "",
         region: "",
@@ -131,19 +152,19 @@ export default {
       content: "我是富文本编辑器的内容",
       //tinymce的配置信息 参考官方文档 https://www.tinymce.com/docs/configure/integration-and-setup/
       editorSetting: {
-        height: 400,
-
+        height: 400
       }
     };
   },
   components: {
     PageTopBack,
-    // Editor,
-    Tinymce
+    LineChart,
+    Tinymce,
+    PreView
   },
   methods: {
-    _handleContent(content){
-      console.log(content)
+    _handleContent(content) {
+      console.log(content);
     },
     onSubmit() {
       this.$message("submit!");
@@ -176,6 +197,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.top {
+  margin-bottom: 10px;
+}
 .PicPreBox {
   position: relative;
   margin: 0 auto;
