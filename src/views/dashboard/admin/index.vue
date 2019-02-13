@@ -3,6 +3,7 @@
 
     <!-- <github-corner style="position: absolute; top: 0px; border: 0; right: 0;"/> -->
 
+<div v-hover="1+12">{{'sdfasdfs' | filterTest}}</div>
     <panel-group @handleSetLineChartData="handleSetLineChartData"/>
 
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">

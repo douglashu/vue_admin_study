@@ -35,7 +35,7 @@ export const constantRouterMap = [
     children: [{
       path: 'dashboard',
       name: 'dashboard',
-      meta: { title: '面板', icon: 'example' },
+      meta: { title: '面板', icon: 'shejishengchan' },
       component: () => import('@/views/dashboard/index')
     }]
   },
@@ -46,7 +46,7 @@ let filterRouteArr = [
   {
     path: '/pictureLibrary',
     component: Layout,
-    redirect: '/pictureLibrary/pictureByList',
+    // redirect: '/pictureLibrary/pictureByList',
     name: 'Pictures',
     meta: { title: '图片库', icon: 'tongjichaxun' },
     children: [
@@ -54,21 +54,21 @@ let filterRouteArr = [
         path: 'pictureByList',
         name: 'pictureByList',
         component: () => import('@/views/pictureLibrary/pictureByList/index'),
-        meta: { title: '列表', icon: 'tongjichaxun'}
+        meta: { title: '列表', icon: 'bangongguanli'}
       }
       ,
       {
         path: 'pictureByImg',
         name: 'pictureByImg', 
         component: () => import('@/views/pictureLibrary/pictureByImg/index'),
-        meta: { title: '图片墙', icon: 'table' ,roles:['admin']}
+        meta: { title: '图片墙', icon: 'gongchengguanli1' ,roles:['admin']}
       }
       ,
       {
         path: 'uploadPictures',
         name: 'uploadPictures', 
         component: () => import('@/views/pictureLibrary/uploadPictures/index'),
-        meta: { title: '图片上传', icon: 'link',roles:['admin']}
+        meta: { title: '图片上传', icon: 'renshiguanli',roles:['admin']}
       }
       ,
       {
@@ -83,7 +83,7 @@ let filterRouteArr = [
     path: '/articles',
     component: Layout,
     name: 'Articles',
-    meta: { title: 'excel', icon: 'link' },
+    meta: { title: 'excel', icon: 'tudangguanli' },
     children: [
       {
         path: 'articleList',
